@@ -1,0 +1,156 @@
+/* ===== ANIMATIONS PRINCIPALES ===== */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(50px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bounce-in {
+  0% { opacity: 0; transform: scale(0.3); }
+  50% { opacity: 1; transform: scale(1.1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+@keyframes float-delayed {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(-5deg); }
+}
+
+/* ===== CLASSES D'ANIMATION ===== */
+.animate-fade-in {
+  animation: fade-in 0.8s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.6s ease-out forwards;
+}
+
+.animate-bounce-in {
+  animation: bounce-in 0.8s ease-out forwards;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float-delayed 8s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
+/* ===== EFFET TYPEWRITER AMÉLIORÉ ===== */
+.typewriter-text {
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typewriter 3s steps(60) forwards, blink-caret 0.75s step-end infinite;
+  border-right: 3px solid;
+  max-width: 100%;
+}
+
+@keyframes typewriter {
+  from { 
+    width: 0;
+  }
+  to { 
+    width: 100%;
+  }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: currentColor; }
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 640px) {
+  .typewriter-text {
+    white-space: normal;
+    animation: fade-in 2s ease-out forwards;
+    border-right: none;
+  }
+  
+  .min-h-\[200px\] {
+    min-height: 150px !important;
+  }
+  
+  .min-h-\[300px\] {
+    min-height: 250px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .space-y-8 > * + * {
+    margin-top: 1.5rem !important;
+  }
+  
+  /* Réduction des tailles sur très petits écrans */
+  .text-4xl { font-size: 2rem !important; }
+  .text-5xl { font-size: 2.5rem !important; }
+  .text-6xl { font-size: 3rem !important; }
+  .text-7xl { font-size: 3.5rem !important; }
+}
+
+/* ===== AMÉLIORATIONS VISUELLES ===== */
+.group:hover .group-hover\:opacity-100 {
+  opacity: 1;
+}
+
+/* Effet de glassmorphism */
+.bg-white {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Ombres plus douces */
+.shadow-2xl {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15),
+              0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+/* Animation des boutons */
+button {
+  position: relative;
+  overflow: hidden;
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+button:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* Amélioration des marges et espacements */
+.space-y-8 > * + * {
+  margin-top: 2rem;
+}
+
+/* Effet de parallax léger pour les éléments décoratifs */
+.animate-float {
+  will-change: transform;
+}
+
+.animate-float-delayed {
+  will-change: transform;
+}

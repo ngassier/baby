@@ -1,0 +1,112 @@
+<div class="min-h-screen bg-gradient-final flex items-center justify-center p-4 overflow-x-hidden">
+  
+  <div class="max-w-4xl w-full mx-auto px-4">
+    
+    <!-- Titre de révélation -->
+    <div class="text-center mb-12 animate-fade-in">
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6 drop-shadow-2xl">
+        🎭 La Grande Révélation 🎭
+      </h1>
+    </div>
+
+    <!-- Container principal avec hauteur fixe pour éviter les sauts -->
+    <div class="space-y-8">
+      
+      <!-- Premier message -->
+      <div *ngIf="showFirstMessage" class="animate-slide-up">
+        <div class="bg-white rounded-3xl shadow-2xl p-6 md:p-10 min-h-[200px] flex items-center justify-center;">
+          <div class="text-center max-w-3xl">
+            <div class="text-4xl mb-6">🤔✨</div>
+            <div class="typewriter-text text-lg sm:text-xl md:text-2xl font-semibold text-gray-800 leading-relaxed">
+              Toutes tes réponses montrent que tu as exactement ce qu'il faut pour une mission très spéciale...
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Deuxième message -->
+      <div *ngIf="showSecondMessage" class="animate-bounce-in">
+        <div class="rounded-3xl shadow-2xl p-6 md:p-10 min-h-[300px] flex flex-col items-center justify-center text-white" 
+             style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+          
+          <div class="text-center max-w-3xl">
+            <div class="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 animate-pulse">
+              🌟 LA GRANDE QUESTION 🌟
+            </div>
+            
+            <div class="typewriter-text text-xl sm:text-2xl md:text-3xl font-bold leading-relaxed mb-8">
+              Veux-tu devenir le parrain / la marraine de {{ babyName }} ?
+            </div>
+            
+            <div class="text-6xl md:text-7xl animate-bounce">
+              👶✨
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Boutons de réponse -->
+      <div *ngIf="showButtons && !showSadReaction" class="animate-fade-in">
+        <div class="flex flex-col sm:flex-row gap-6 justify-center items-center max-w-2xl mx-auto">
+          
+          <button 
+            (click)="acceptProposal()"
+            class="font-bold text-lg sm:text-xl md:text-2xl rounded-full shadow-xl animate-bounce-in w-full max-w-md mx-auto"
+            style="background: linear-gradient(135deg, #10b981, #059669); color: white; padding: 1rem 2rem; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); transition: all 0.3s ease;"
+            onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 25px 50px -12px rgba(0,0,0,0.25)'"
+            onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 20px 25px -5px rgba(0,0,0,0.1)'">
+            ✅ J'accepte avec honneur ! ✅
+          </button>
+
+          <button 
+            (click)="needToThink()"
+            class="font-bold text-lg sm:text-xl md:text-2xl rounded-full shadow-xl animate-bounce-in w-full max-w-md mx-auto"
+            style="background: linear-gradient(135deg, #f59e0b, #dc2626); color: white; padding: 1rem 2rem; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); transition: all 0.3s ease;"
+            onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 25px 50px -12px rgba(0,0,0,0.25)'"
+            onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 20px 25px -5px rgba(0,0,0,0.1)'">
+            🤔 Je dois réfléchir... 🤔
+          </button>
+        </div>
+      </div>
+
+      <!-- Réaction triste -->
+      <div *ngIf="showSadReaction" class="animate-bounce-in">
+        <div class="bg-white rounded-3xl shadow-2xl p-8 md:p-12 min-h-[300px] flex flex-col items-center justify-center">
+          <div class="text-center max-w-2xl">
+            <div class="text-7xl md:text-8xl mb-6 animate-bounce">
+              😢👶😭
+            </div>
+            <div class="text-2xl md:text-3xl font-bold text-gray-800 mb-4 leading-relaxed">
+              Oh non... {{ babyName }} va être si triste...
+            </div>
+            <div class="text-lg md:text-xl text-gray-600 leading-relaxed">
+              Mais on comprend, c'est une grande responsabilité ! 💭
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bouton de retour -->
+      <div class="text-center mt-12">
+        <button 
+          (click)="restartQuiz()"
+          class="btn-secondary animate-fade-in">
+          🔄 Recommencer l'aventure
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Éléments décoratifs flottants -->
+    <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+      <div class="absolute animate-float" style="top: 10%; left: 5%; font-size: 3rem; opacity: 0.2;">⭐</div>
+      <div class="absolute animate-float-delayed" style="top: 20%; right: 5%; font-size: 2.5rem; opacity: 0.2;">🎪</div>
+      <div class="absolute animate-float" style="bottom: 30%; left: 10%; font-size: 3.5rem; opacity: 0.2;">🎭</div>
+      <div class="absolute animate-float-delayed" style="bottom: 20%; right: 15%; font-size: 3rem; opacity: 0.2;">✨</div>
+      <div class="absolute animate-float" style="top: 50%; right: 5%; font-size: 2rem; opacity: 0.15;">🌟</div>
+      <div class="absolute animate-float-delayed" style="bottom: 60%; left: 5%; font-size: 2.5rem; opacity: 0.15;">🎈</div>
+    </div>
+
+  </div>
+
+</div>
